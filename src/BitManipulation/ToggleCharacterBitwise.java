@@ -1,4 +1,4 @@
-package Array;
+package BitManipulation;
 
 public class ToggleCharacterBitwise {
     public static void toggleCharacter(char [] ch){

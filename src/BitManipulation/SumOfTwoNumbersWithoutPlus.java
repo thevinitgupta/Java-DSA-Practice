@@ -1,4 +1,4 @@
-package Array;
+package BitManipulation;
 
 public class SumOfTwoNumbersWithoutPlus {
     static int sum(int a , int b)

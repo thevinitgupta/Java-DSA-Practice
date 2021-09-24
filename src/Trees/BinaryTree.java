@@ -1,5 +1,7 @@
 package Trees;
 
+import java.util.Scanner;
+
 class Node {
     int key;
     Node left,right;
@@ -9,6 +11,7 @@ class Node {
     }
 }
 public class BinaryTree {
+    static Scanner sc = new Scanner(System.in);
     Node root;
 
     //constructor for initializing
@@ -30,23 +33,17 @@ public class BinaryTree {
     * */
 
 
-    Node insert(Node root,int val){
-        Node n = new Node(val);
-        if(root == null) {
-            root = n;
-            return root;
-        }
-        else {
-            if(root.left==null) root.left = n;
-            else if(root.left!=null){
-                return insert(root.left,val);
-            }
-            else if(root.right==null) root.right = n;
-            else if(root.right!=null){
-                return insert(root.right,val);
-            }
-        }
-        return root;
+    Node create(){
+        int val = 0;
+        System.out.println("Enter the value of Node(or -1 if you want this node empty) :");
+        val = sc.nextInt();
+        if(val==-1) return null;
+        Node newNode = new Node(val);
+        System.out.println("Enter the left child of "+val);
+        newNode.left = create();
+        System.out.println("Enter the right child of "+val);
+        newNode.right = create();
+        return  newNode;
     }
     void print(String choice){
         if(choice.compareToIgnoreCase("pre")==0) {
@@ -83,12 +80,37 @@ public class BinaryTree {
             return;
 
         /* first recur on left sutree */
-        preOrder(node.left);
+        inOrder(node.left);
 
         /* then print data of node */
         System.out.print(node.key + " ");
 
         /* now recur on right subtree */
-        preOrder(node.right);
+        inOrder(node.right);
+    }
+    void postOrder(Node node){
+        if (node == null)
+            return;
+
+        /* first recur on left sutree */
+        postOrder(node.left);
+
+        /* now recur on right subtree */
+        postOrder(node.right);
+
+        /* then print data of node */
+        System.out.print(node.key + " ");
+    }
+
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree(5);
+        bt.root.left = new Node(4);
+        bt.root.right = new Node(3);
+        bt.root.left.left = new Node(6);
+        bt.root.left.right = new Node(1);
+        bt.root.right.left = new Node(8);
+        bt.print("pre");
+        bt.print("in");
+        bt.print("post");
     }
 }

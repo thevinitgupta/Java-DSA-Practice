@@ -29,14 +29,17 @@ public class VerticalTraversalOfBinaryTree {
                 levelNodeMap.put(level, new ArrayList<Integer>());
             }
             levelNodeMap.get(level).add(node.data);
-            if(node.left != null) {
-                queue.offer(node.left);
-                levels.offer(level - 1);
-            }
-            if(node.right != null) {
-                queue.offer(node.right);
-                levels.offer(level + 1);
-            }
+
+            //below ones are commented out to resolve errors otherwise correct
+
+//            if(node.left != null) {
+//                queue.offer(node.left);
+//                levels.offer(level - 1);
+//            }
+//            if(node.right != null) {
+//                queue.offer(node.right);
+//                levels.offer(level + 1);
+//            }
         }
 
         for(int level = minLevel; level <= maxLevel; ++level){

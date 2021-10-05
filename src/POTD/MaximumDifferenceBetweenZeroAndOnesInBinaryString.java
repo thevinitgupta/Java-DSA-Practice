@@ -53,7 +53,7 @@ public class MaximumDifferenceBetweenZeroAndOnesInBinaryString {
 //        return findlength(arr, s, n, 0, 0, dp);
 //    }
 
-    int maxSubstring(String S) {
+    static int maxSubstring(String S) {
         // code here
         int n=S.length();
         int max=0;

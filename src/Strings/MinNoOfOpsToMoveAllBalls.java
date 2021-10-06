@@ -3,15 +3,8 @@ package Strings;
 import java.util.Arrays;
 
 public class MinNoOfOpsToMoveAllBalls {
-    public static int[] minOperations(String boxes) {
-        int [] res = new int[boxes.length()];
-        int count
-        return res;
-    }
-
     //brute force N*N Solution
-    /*
-    * public static int[] minOperations(String boxes) {
+    public static int[] minOperations(String boxes) {
         int [] res = new int[boxes.length()];
         for(int i=0;i<boxes.length();i++){
             int tot=0;
@@ -24,7 +17,6 @@ public class MinNoOfOpsToMoveAllBalls {
         }
         return res;
     }
-    * */
 
     public static void main(String[] args) {
         int [] moves = minOperations("001011");

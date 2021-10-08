@@ -4,6 +4,8 @@ package POTD;
 *
 * */
 public class CowsOfFooLand {
+
+    //Time Limit Exceeded
     public static int  TotalAnimal(long N)
     {
         // code here
@@ -21,6 +23,39 @@ public class CowsOfFooLand {
         }
         return (int) offSprings;
     }
+
+    //Accepted solution
+    /*
+    * long MOD = 1000000007L;
+	public void fastFib(long n, long[] ans){
+	    if(n == 0){
+	        ans[0] = 0;
+	        ans[1] = 1;
+	        return;
+	    }
+	    fastFib((n/2), ans);
+	    long a = ans[0];
+	    long b = ans[1];
+	    long c = 2*b - a;
+	    if(c < 0)
+	        c += MOD;
+	    c = (a * c) % MOD;
+	    long d = (a*a + b*b) % MOD;
+
+	    if(n%2 == 0){
+	        ans[0] = c;
+	        ans[1] = d;
+	    }else{
+	        ans[0] = d;
+	        ans[1] = c+d;
+	    }
+	}
+	public int TotalAnimal(long N){
+		long[] ans = new long[2];
+		fastFib(N + 1, ans);
+		return (int)ans[0];
+	}
+    * */
 
     public static void main(String[] args) {
         int totAnimals = TotalAnimal(Long.parseLong("100000"));

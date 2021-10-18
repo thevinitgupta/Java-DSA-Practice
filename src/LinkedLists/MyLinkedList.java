@@ -14,4 +14,12 @@ public class MyLinkedList {
         }
         temp.next = newNode;
     }
+    public void print(Node h){
+        Node temp = h;
+        while(temp.next!=null){
+            System.out.print(temp.data+" -> ");
+            temp = temp.next;
+        }
+        System.out.println(temp.data);
+    }
 }

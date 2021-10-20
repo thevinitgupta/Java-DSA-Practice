@@ -29,7 +29,7 @@ public class ReturnMiddle {
         ll.add(4);
         ll.add(3);
         ll.add(6);
-//        ll.add(11);
+        ll.add(11);
         Node mid = middleNode(ll.head);
         System.out.println(mid.data);
     }

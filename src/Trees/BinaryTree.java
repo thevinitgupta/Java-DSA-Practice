@@ -2,24 +2,16 @@ package Trees;
 
 import java.util.Scanner;
 
-class Node {
-    int key;
-    Node left,right;
-    Node(int key){
-        this.key = key;
-        left=right=null;
-    }
-}
 public class BinaryTree {
     static Scanner sc = new Scanner(System.in);
-    Node root;
+    public Node root;
 
     //constructor for initializing
-    BinaryTree(int key){
+    public BinaryTree(int key){
         root = new Node(key);
     }
     //empty constructor, so set value of root = null
-    BinaryTree(){
+    public BinaryTree(){
         root = null;
     }
 
@@ -33,7 +25,7 @@ public class BinaryTree {
     * */
 
 
-    Node create(){
+    public Node create(){
         int val = 0;
         System.out.println("Enter the value of Node(or -1 if you want this node empty) :");
         val = sc.nextInt();
@@ -45,7 +37,7 @@ public class BinaryTree {
         newNode.right = create();
         return  newNode;
     }
-    void print(String choice){
+    public void print(String choice){
         if(choice.compareToIgnoreCase("pre")==0) {
             System.out.println("Pre Order Traversal : ");
             preOrder(this.root);

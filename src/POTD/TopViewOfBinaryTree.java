@@ -1,5 +1,4 @@
 package POTD;
-import Trees.Node;
 
 import java.util.*;
 
@@ -11,6 +10,16 @@ class qObj
     {
         node=n;
         level=l;
+    }
+}
+
+ class Node {
+     int data;
+     Node left, right;
+
+    Node(int data) {
+        this.data = data;
+        left = right = null;
     }
 }
 public class TopViewOfBinaryTree {

@@ -1,5 +1,7 @@
 package POTD;
 
+import Trees.Node;
+
 public class IsBinaryTreeHeap {
     int size(Node root){
         if(root==null) return 0;
@@ -8,7 +10,7 @@ public class IsBinaryTreeHeap {
     boolean checkHeap(Node root, int index, int n){
         if(root==null) return true;
         else if(index>n) return false;
-        if((root.left!=null && root.left.data >= root.data) ||  (root.right!=null && root.right.data >= root.data))
+        if((root.left!=null && root.left.key >= root.key) ||  (root.right!=null && root.right.key >= root.key))
             return false;
         return checkHeap(root.left,2*index+1,n) && checkHeap(root.right,2*index+2,n);
     }

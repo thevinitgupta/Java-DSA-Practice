@@ -1,4 +1,4 @@
-package HashSets;
+package Design;
 
 import LinkedLists.MyLinkedList;
 import LinkedLists.Node;

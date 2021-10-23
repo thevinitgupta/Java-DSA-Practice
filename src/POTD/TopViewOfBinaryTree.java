@@ -1,6 +1,7 @@
 package POTD;
 
 import java.util.*;
+import Trees.Node;
 
 class qObj
 {
@@ -13,15 +14,7 @@ class qObj
     }
 }
 
- class Node {
-     int data;
-     Node left, right;
 
-    Node(int data) {
-        this.data = data;
-        left = right = null;
-    }
-}
 public class TopViewOfBinaryTree {
     /*
     * {
@@ -40,7 +33,7 @@ public class TopViewOfBinaryTree {
         // add your code
         ArrayList<Integer> rootVals = new ArrayList<>();
         rootVals.add(1);
-        rootVals.add(root.data);
+        rootVals.add(root.key);
         view.put(0,rootVals);
         if(root.left!=null) getTop(root.left,2,-1);
         if(root.right!=null) getTop(root.right,2,1);
@@ -56,7 +49,7 @@ public class TopViewOfBinaryTree {
             ArrayList<Integer> vals = view.get(col);
             if( h<vals.get(0)) {
                 vals.set(0,h);
-                vals.set(1,root.data);
+                vals.set(1,root.key);
                 view.put(col,vals);
             }
         }
@@ -64,7 +57,7 @@ public class TopViewOfBinaryTree {
             if(col<min || col>max){
                 ArrayList<Integer> vals = new ArrayList<>();
                 vals.add(h);
-                vals.add(root.data);
+                vals.add(root.key);
                 view.put(col,vals);
                 min = Math.min(col,min);
                 max = Math.max(col,max);
@@ -89,7 +82,7 @@ public class TopViewOfBinaryTree {
         {
             qObj popped=q.poll();
             if(!map.containsKey(popped.level))
-                map.put(popped.level,popped.node.data);
+                map.put(popped.level,popped.node.key);
 
             //if left child of popped.node exists, pushing it in
             //the queue with the horizontal distance.

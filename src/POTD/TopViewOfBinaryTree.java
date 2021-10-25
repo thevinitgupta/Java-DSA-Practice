@@ -31,6 +31,7 @@ public class TopViewOfBinaryTree {
     static ArrayList<Integer> topView(Node root)
     {
         // add your code
+        view.clear();
         ArrayList<Integer> rootVals = new ArrayList<>();
         rootVals.add(1);
         rootVals.add(root.key);

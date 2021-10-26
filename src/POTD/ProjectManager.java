@@ -1,5 +1,12 @@
 package POTD;
-
+import java.util.*;
+class pair{
+    int x,y;
+    pair(){
+        this.x = 0;
+        this.y = 0;
+    }
+}
 public class ProjectManager {
     public int minTime(ArrayList<pair> dependency, int[] duration, int n, int m) {
         // code here

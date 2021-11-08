@@ -15,6 +15,19 @@ public class ReverseLinkedList {
         return head;
     }
 
+    public static ListNode reverseList(ListNode head) {
+        if(head==null || head.next==null) return head;
+        ListNode prev= null,curr = head,next = head.next;
+        while(curr.next!=null){
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            next = curr.next;
+        }
+        curr.next = prev;
+        head = curr;
+        return head;
+    }
     public static void main(String[] args) {
         MyLinkedList ll = new MyLinkedList();
         ll.add(1);

@@ -1,5 +1,7 @@
 package LinkedLists;
 
+import static LinkedLists.ReverseLinkedList.reverseList;
+
 public class ReorderList {
     static ListNode headNode;
     public static int getSize(ListNode head){
@@ -20,21 +22,28 @@ public class ReorderList {
         ListNode temp = head;
 
         //loop to reach the middle element after which the reversing will begin
-        while (count<mid){
-           temp = temp.next;
-           count++;
+        while (count<mid-1){
+            temp = temp.next;
+            count++;
         }
-        ListNode rev = ReverseLinkedList.reverseList(temp.next),tr = rev,next = tr.next;
+        ListNode rev = temp.next;
         temp.next = null;
+        rev = reverseList(rev);
         temp = head;
+        ListNode tr = rev,next = tr.next,tNext = temp.next,prev = temp;
+
         while(temp!=null && tr!=null){
-            temp.next = tr;
             tr.next = temp.next;
+            temp.next = tr;
+            prev = tr;
             tr = next;
             next = tr==null ? null : tr.next;
-            temp = temp.next;
+            temp = tNext;
+            tNext = temp==null ? null : temp.next;
         }
-        headNode = head;
+        if(tr!=null){
+            prev.next = tr;
+        }
         return ;
     }
 

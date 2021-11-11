@@ -5,14 +5,14 @@ package POTD;
 A[] = {2, 3, 5, 8}
 * */
 public class CountTheNumberOfSubArrays {
-    long countSubarray(int N,int A[],long L,long R) {
+    static long countSubarray(int N,int A[],long L,long R) {
         // code here
         long rCount = countSubLessEqual(A, N, R);
         long lCount = countSubLessEqual(A, N, L-1);
 
         return rCount - lCount;
     }
-    long countSubLessEqual(int arr[], int n, long x) {
+    static long countSubLessEqual(int arr[], int n, long x) {
         int left = 0, right = 0;
         long curr = 0;
         long count = 0;

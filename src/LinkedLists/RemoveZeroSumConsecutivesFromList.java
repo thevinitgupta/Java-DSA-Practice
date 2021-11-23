@@ -1,7 +1,5 @@
 package LinkedLists;
 
-import java.util.ArrayList;
-
 public class RemoveZeroSumConsecutivesFromList {
     public ListNode removeZeroSumSublists(ListNode head) {
         ListNode temp = head,prev = head;

@@ -23,7 +23,29 @@ public class SubarraysWithEqual1and0 {
     static int countSubarrWithEqualZeroAndOne(int arr[], int n)
     {
         // add your code here
+        HashMap<Integer,Integer> cmap = new HashMap<>();
+        int sum =0,count=0;
+        cmap.put(0,1);
+        for(int i=0;i<n;i++){
+            if(arr[i]==1) sum++;
+            else sum--;
 
+            if(cmap.containsKey(sum)) {
+                int curr = cmap.get(sum);
+                // System.out.println("i : "+i);
+                // System.out.println(sum);
+                // System.out.println(curr+"\n");
+                count += curr;
+                curr++;
+                cmap.put(sum,curr);
+            }
+            else {
+                cmap.put(sum,1);
+                //System.out.println(cmap);
+            }
+        }
+        //System.out.println(cmap);
+        return count;
     }
 
 }

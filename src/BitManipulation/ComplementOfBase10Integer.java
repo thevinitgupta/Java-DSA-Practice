@@ -1,7 +1,21 @@
 package BitManipulation;
 
 public class ComplementOfBase10Integer {
+
     public int bitwiseComplement(int n) {
+        if(n==0) return 1;
+
+        int i = 0;
+
+        while(i<n){
+            i = i<<1 | 1;
+        }
+
+        return i-n;
+    }
+
+    //string approach - brute force
+    public int bitwiseComplement2(int n) {
         if(n==0) return 1;
         StringBuilder comp = new StringBuilder();
         while(n>1){

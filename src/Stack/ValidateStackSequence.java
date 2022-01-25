@@ -9,17 +9,13 @@ public class ValidateStackSequence {
         st.push(pushed[i]);
         i++;
         while(i<m && j<n){
-            if(st.isEmpty()) {
+            if(st.isEmpty() || st.peek()!=popped[j] ) {
                 st.push(pushed[i]);
                 i++;
-            }
-            if(st.peek()==popped[j]) {
-                st.pop();
-                j++;
             }
             else {
-                st.push(pushed[i]);
-                i++;
+                st.pop();
+                j++;
             }
         }
 

@@ -5,6 +5,26 @@ import java.util.HashMap;
 import java.util.List;
 
 public class BinaryTreeLevelOrderTraversal {
+    public List<List<Integer>> levelOrderOptimized(TreeNode root) {
+        List<List<Integer>> levels = new ArrayList<>();
+        inOrder(root,0,levels);
+        return levels;
+    }
+    private static void inOrder(TreeNode root,int level, List<List<Integer>> levels){
+        if(root==null) return;
+        List<Integer> vals = new ArrayList<>();
+        if(level<levels.size()){
+            vals = levels.get(level);
+            vals.add(root.val);
+            levels.set(level,vals);
+        }
+        else {
+            vals.add(root.val);
+            levels.add(vals);
+        }
+        inOrder(root.left,level+1,levels);
+        inOrder(root.right,level+1,levels);
+    }
     static HashMap<Integer, List<Integer>> lev;
     static int max;
     public List<List<Integer>> levelOrder(TreeNode root) {

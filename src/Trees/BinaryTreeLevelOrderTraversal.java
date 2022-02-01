@@ -1,10 +1,27 @@
 package Trees;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class BinaryTreeLevelOrderTraversal {
+    public List<List<Integer>> levelOrderWithQueue(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>();
+        List<List<Integer>> levels = new ArrayList<>();
+        if(root==null) return levels;
+        q.add(root);
+        int c=1;
+        while(!q.isEmpty()){
+            List<Integer> lev = new ArrayList<>();
+            int n=q.size();
+            for(int i=0;i<n;i++){
+                TreeNode front = q.peek();
+                if(front.left!=null) q.add(front.left);
+                if(front.right!=null) q.add(front.right);
+                lev.add(q.remove().val);
+            }
+            levels.add(lev);
+        }
+        return levels;
+    }
     public List<List<Integer>> levelOrderOptimized(TreeNode root) {
         List<List<Integer>> levels = new ArrayList<>();
         inOrder(root,0,levels);

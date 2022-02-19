@@ -1,5 +1,7 @@
 package Array;
 
+import java.util.ArrayList;
+
 public class IntervalListIntersections {
     public int[][] intervalIntersection(int[][] fl, int[][] sl) {
         ArrayList<ArrayList<Integer>> inter = new ArrayList<>();

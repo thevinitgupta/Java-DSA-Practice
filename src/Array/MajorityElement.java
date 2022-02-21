@@ -1,5 +1,6 @@
 package Array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class MajorityElement {
@@ -17,6 +18,24 @@ public class MajorityElement {
             else count.put(a[i],1);
         }
         return -1;
+    }
+
+    //O(1) Space Solution
+    public int majorityElement(int[] nums) {
+        int n=nums.length;
+        Arrays.sort(nums);
+        int i=0,j=0;
+        while(i<n && j<n){
+            int c = 0;
+            while(j<n && nums[i]==nums[j]){
+                j++;
+                c++;
+            }
+            if(c>(n/2)) return nums[i];
+            i = j;
+            j=i;
+        }
+        return 0;
     }
 
     public static void main(String[] args) {

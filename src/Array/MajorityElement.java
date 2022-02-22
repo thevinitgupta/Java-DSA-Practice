@@ -38,6 +38,18 @@ public class MajorityElement {
         return 0;
     }
 
+    //O(1) space and O(n) time
+    public static int majorityElementOpt(int[] nums) {
+        int n=nums.length;
+        int c=0, el=0;
+        for(int i=0;i<n;i++){
+            if(c==0) el = nums[i];
+            if(nums[i]==el) c++;
+            else c--;
+        }
+        return el;
+    }
+
     public static void main(String[] args) {
         int [] arr = {3,1,8,3,2};
         System.out.println(majorityElement(arr,5));

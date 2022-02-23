@@ -2,7 +2,13 @@ package POTD;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
+class PairS {
+    int x,y;
+    PairS(int x, int y){
+        this.x = x;
+        this.y= y;
+    }
+}
 public class SpideySense {
     public static int[][] findDistance(char mat[][], int m,int n)
     {
@@ -16,12 +22,12 @@ public class SpideySense {
             }
         }
 
-        Queue<Pair> q = new LinkedList<>();
+        Queue<PairS> q = new LinkedList<>();
         boolean visited[][] = new boolean[m][n];
         for(int i = 0; i<m; i++) {
             for(int j=0; j<n; j++) {
                 if(mat[i][j] == 'B') {
-                    q.add(new Pair(i, j));
+                    q.add(new PairS(i, j));
                     visited[i][j] = true;
                     dist[i][j] = 0;
                 } else if(mat[i][j] == 'W') {
@@ -34,7 +40,7 @@ public class SpideySense {
         int[] colNum = {1, 0, 0, -1};
 
         while(!q.isEmpty()) {
-            Pair curr = q.poll();
+            PairS curr = q.poll();
 
             int row = curr.x;
             int col = curr.y;
@@ -45,7 +51,7 @@ public class SpideySense {
 
                 if(r>=0 && c>=0 && r<m && c<n && mat[r][c]!='W' && visited[r][c]!=true) {
                     dist[r][c] = dist[row][col] + 1;
-                    q.add(new Pair(r,c));
+                    q.add(new PairS(r,c));
                     visited[r][c] = true;
                 }
             }

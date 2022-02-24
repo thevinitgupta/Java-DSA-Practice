@@ -15,4 +15,40 @@ public class RepeatedStringMatch {
         }
         return -1;
     }
+    public int repeatedStringMatchFast(String a, String b) {
+        int[] countMap = new int[26];
+        for(char c : a.toCharArray()){
+            countMap[c - 'a']++;
+        }
+
+        for(char c : b.toCharArray()){
+            if(countMap[c-'a'] < 1){
+                return -1;
+            }
+        }
+
+        if(a.length() >= b.length()){
+            if(a.contains(b)){
+                return 1;
+            }
+            String repeated = a + a;
+            if(repeated.contains(b)){
+                return 2;
+            }
+
+            return -1;
+        }
+
+        String repeated = a;
+        int count = 1;
+        while(repeated.length() <= b.length() * 2){
+            repeated = repeated + a;
+            count++;
+            if(repeated.length() >= b.length() && repeated.contains(b)){
+                return count;
+            }
+        }
+
+        return -1;
+    }
 }

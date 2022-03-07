@@ -21,7 +21,9 @@ public class CheckForPerfectCubeSubarray {
         int maximum=N+1;
         for(int i=0;i<N;i++){
             if(iscube(answer.get(i)))
-            {maximum=Math.min(maximum,i+1);}
+            {
+                maximum=Math.min(maximum,i+1);
+            }
             for(int j=0;j<i;j++){
                 if(iscube(answer.get(i)-answer.get(i))){
                     maximum=Math.min(maximum,i-j);

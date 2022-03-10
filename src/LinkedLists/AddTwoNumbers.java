@@ -18,4 +18,37 @@ public class AddTwoNumbers {
         }
         return sumHead.next;
     }
+
+    public ListNode addTwoNumbersCleaner(ListNode l1, ListNode l2) {
+        ListNode sHead = new ListNode(-1);
+
+        ListNode temp1 = l1, temp2 = l2, temp3 = sHead;
+        int carry = 0;
+        while(temp1!=null && temp2!=null){
+            int sum = temp1.val + temp2.val +carry;
+            temp3.next = new ListNode(sum%10);
+            carry = sum<10 ? 0 : 1;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+            temp3 = temp3.next;
+        }
+        while(temp1!=null) {
+            int sum = temp1.val + carry;
+            temp3.next = new ListNode(sum%10);
+            carry = sum<10 ? 0 : 1;
+            temp1 = temp1.next;
+            temp3 = temp3.next;
+        }
+        while(temp2!=null) {
+            int sum = temp2.val + carry;
+            temp3.next = new ListNode(sum%10);
+            carry = sum<10 ? 0 : 1;
+            temp2 = temp2.next;
+            temp3 = temp3.next;
+        }
+        if(carry>0) {
+            temp3.next = new ListNode(carry);
+        }
+        return sHead.next;
+    }
 }

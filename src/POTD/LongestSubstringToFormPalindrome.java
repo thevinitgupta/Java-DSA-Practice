@@ -3,6 +3,42 @@ package POTD;
 import java.util.*;
 
 public class LongestSubstringToFormPalindrome {
+    static int longestSubstringBit(String S) {
+        int n = S.length();
+
+        Map<Integer, Integer> index = new HashMap<>();
+        int answer = 0;
+
+        int mask = 0;
+        index.put(mask, -1);
+
+        for(int i = 0; i < n; i++)
+        {
+
+            int temp = (int)S.charAt(i) - 97;
+
+            mask ^= (1 << temp);
+
+            if (index.containsKey(mask))
+            {
+                answer = Math.max(answer,
+                        i - index.get(mask));
+            }
+            else
+                index.put(mask,i);
+
+            for (int j = 0;j < 26; j++)
+            {
+                int mask2 = mask ^ (1 << j);
+                if (index.containsKey(mask2))
+                {
+                    answer = Math.max(answer,
+                            i - index.get(mask2));
+                }
+            }
+        }
+        return answer;
+    }
     static int longestSubstring(String S) {
         int [] hash = new int[26];
         for(int i=0;i<S.length();i++){

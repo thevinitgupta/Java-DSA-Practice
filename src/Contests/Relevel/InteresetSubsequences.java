@@ -17,27 +17,27 @@ public class InteresetSubsequences {
             for(int j=0;j<n;j++){
                 arr[j] = Integer.parseInt(sc.nextLine());
             }
-//            int [] getMax = getMax(arr,n,m);
-//            int s = 0;
-//            for(int j=0;j<getMax.length;j++){
-//                s += getMax[j];
-//            }
-//            System.out.println(s);
+            int [] getMax = getMax(arr,n,m);
+            int s = 0;
+            for(int j=0;j<getMax.length;j++){
+                s += getMax[j];
+            }
+            System.out.println(s);
         }
     }
-//    public static int[] getMax(int [] nums, int n, int k){
-//
-//        int [] ref = Arrays.copyOf(nums,n);
-//         HashMap<Integer, TreeSet<Integer>> map = new HashMap<Integer, TreeSet<Integer>>();
-//        IntStream.range(0,n).forEach(i ->
-//                map.computeIfAbsent(nums[i],key -> new TreeSet<Integer>()).add(i));
-//         Arrays.sort(nums);
-//         int [] idxes = new int[k];
-//
-//         for(int i = n-1; i>= n-k; k--){
-//             TreeSet<Integer> set = map.get(nums[i]);
-//             idxes[n-i-1] = set.pollFirst();
-//         }
-//         return Arrays.stream(idxes).sorted().map(i -> ref[i]).toArray();
-//    }
+    public static int[] getMax(int [] nums, int n, int k){
+
+        int [] ref = Arrays.copyOf(nums,n);
+         HashMap<Integer, TreeSet<Integer>> map = new HashMap<Integer, TreeSet<Integer>>();
+        IntStream.range(0,n).forEach(i ->
+                map.computeIfAbsent(nums[i],key -> new TreeSet<Integer>()).add(i));
+         Arrays.sort(nums);
+         int [] idxes = new int[k];
+
+         for(int i = n-1; i>= n-k; k--){
+             TreeSet<Integer> set = map.get(nums[i]);
+             idxes[n-i-1] = set.pollFirst();
+         }
+         return Arrays.stream(idxes).sorted().map(i -> ref[i]).toArray();
+    }
 }

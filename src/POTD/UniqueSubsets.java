@@ -20,12 +20,4 @@ public class UniqueSubsets {
             ls.remove(ls.size()-1);
         }
     }
-
-    public static void main(String[] args) {
-        Map<String, String> map = new LinkedHashMap<String, String>();
-        map.put("Id","574");
-        map.put("Name", "Ram");
-        map.put("Location", "bang");
-        System.out.println(map);
-    }
 }

@@ -27,4 +27,20 @@ public class UniquePaths {
         return;
     }
 
+    //DP solution
+    public int uniquePaths(int m, int n) {
+        // HashMap<String,Boolean> map = new HashMap<>();
+        int [][] dp = new int[m][n];
+        return getPaths(0,0,m,n,dp);
+
+    }
+    public static int getPaths(int i, int j, int m, int n, int [][] dp){
+        if(i>=m || j>=n) return 0;
+        if(dp[i][j]!=0) return dp[i][j];
+        if(i==m-1 && j==n-1) return 1;
+
+        dp[i][j] = getPaths(i+1,j,m,n,dp)+getPaths(i,j+1,m,n,dp);
+        return dp[i][j];
+    }
+
 }

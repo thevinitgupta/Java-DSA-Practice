@@ -3,6 +3,26 @@ package Strings;
 import Trees.TrieNode;
 
 public class LongestCommonPrefix {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length==1) return strs[0];
+        String pref = getPrefix(strs[0], strs[1]);
+        if(pref.length()==0) return pref;
+        for(int i=2;i<strs.length;i++){
+            pref = getPrefix(pref,strs[i]);
+            if(pref.length()==0) return "";
+        }
+        return pref;
+    }
+    public static String getPrefix(String s1, String s2){
+        int l1 = s1.length(), l2 = s2.length(), i=0;
+        if(l1==0 || l2==0) return "";
+
+        while(i<l1 && i<l2 && s1.charAt(i)==s2.charAt(i)){
+            i++;
+        }
+        return s1.substring(0,i);
+    }
+
     public static String getPrefix(TrieNode root){
         int count = 0,cCount = 0,last = 0;
         TrieNode crawler = root.root;

@@ -2,7 +2,23 @@ package POTD;
 import java.util.*;
 
 public class NearlySorted {
+
     ArrayList <Integer> nearlySorted(int arr[], int num, int k)
+    {
+        ArrayList<Integer> result=new ArrayList<>();
+        PriorityQueue<Integer> q=new PriorityQueue<>();
+        for(int i: arr){
+            q.add(i);
+            if(q.size()>k) result.add(q.poll());
+        }
+        while(q.size()>0){
+            result.add(q.poll());
+        }
+        return result;
+    }
+
+    //Giving wrong output for some test cases
+    ArrayList <Integer> nearlySortedWrong(int arr[], int num, int k)
     {
         int [] kHeap = createHeap(arr,0,k+1);
 

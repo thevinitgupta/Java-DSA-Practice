@@ -9,35 +9,28 @@ public class CountNumberOfMaximumORSubset {
         ArrayList<ArrayList<Integer>> subsets = new ArrayList<>();
         ArrayList<Integer> subset = new ArrayList<>();
         subsets.add(subset);
-        generate(nums,0,subsets);
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0;i<subsets.size();i++){
-            ArrayList<Integer> sub = subsets.get(i);
-            // System.out.println(sub);
-            int xor = sub.size() > 0 ? sub.get(0) : 0;
-            for(int j=1;j<sub.size();j++){
-                xor |= sub.get(j);
-            }
-            // System.out.println(xor);
-            map.put(xor, map.getOrDefault(xor,0)+1);
-            max = Math.max(xor,max);
-        }
+        ArrayList<Integer> xors = new ArrayList<>();
+        xors.add(0);
+        max = generate(nums,0,subsets,xors, Integer.MIN_VALUE);
 
-        for(Integer key : map.keySet()){
-            if(key==max) return map.get(key);
+
+        for(Integer key : xors){
+            if(key==max) count++;
         }
-        return -1;
+        return count;
     }
-    public static void generate(int [] nums, int pos, ArrayList<ArrayList<Integer>> subsets){
-        if(pos>=nums.length) return;
+    public static int generate(int [] nums, int pos, ArrayList<ArrayList<Integer>> subsets,  ArrayList<Integer> xors, int max){
+        if(pos>=nums.length) return max;
         int n = subsets.size();
         for(int i=0;i<n;i++){
             ArrayList<Integer> sub = new ArrayList<>();
             sub.addAll(subsets.get(i));
             sub.add(nums[pos]);
             subsets.add(sub);
+            int curr = xors.get(i)|nums[pos];
+            xors.add(curr);
+            max = Math.max(max, Math.max(curr, xors.get(i)));
         }
-        generate(nums,pos+1, subsets);
-        return;
+        return Math.max(max,generate(nums,pos+1, subsets,xors, max));
     }
 }

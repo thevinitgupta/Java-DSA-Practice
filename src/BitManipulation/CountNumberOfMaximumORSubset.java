@@ -4,6 +4,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CountNumberOfMaximumORSubset {
+    public int countMaxOrSubsetsFast(int[] nums) {
+
+        subsets(nums, 0, 0);
+        return count;
+    }
+
+    int count = 0;
+    int maxOR = 0;
+
+    private void subsets(int[] arr, int vidx, int OR){
+
+        if(vidx == arr.length){
+
+            if(OR == maxOR){
+                count ++;
+            }else if(OR > maxOR){
+                count = 1;
+                maxOR = OR;
+            }
+
+            return;
+        }
+
+        // include
+        subsets(arr, vidx+1, OR | arr[vidx]);
+
+        // exclude
+        subsets(arr, vidx+1, OR);
+    }
     public int countMaxOrSubsets(int[] nums) {
         int count = 0, max = Integer.MIN_VALUE;
         ArrayList<ArrayList<Integer>> subsets = new ArrayList<>();

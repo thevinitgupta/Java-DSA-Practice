@@ -1,0 +1,43 @@
+package InterviewBit.Mathematics;
+
+import java.util.HashMap;
+
+public class NthFibonacciNumber {
+    int mod = 1000000007;
+    public int solve(int A) {
+
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        hm.put(1, 1);
+        hm.put(2, 1);
+
+        int ans = find(A, hm);
+
+        return ans;
+
+    }
+    public int find(int A, HashMap<Integer, Integer> hm){
+        if(hm.containsKey(A))
+            return hm.get(A);
+
+        long ans = 0;
+
+        if((A&1)==1){
+            long r1 = find(A/2, hm);
+            long r2 = find(A/2+1, hm);
+
+            // System.out.println(A+" "+r1+" "+r2);
+
+            ans = ((r1*r1)%mod + (r2*r2)%mod)%mod;
+        }else{
+            long r1 = find(A/2-1, hm);
+            long r2 = find(A/2, hm);
+            long r3 = find(A/2+1, hm);
+
+            ans = (r2* (r1+r3)%mod )%mod;
+        }
+        hm.put(A, (int)(ans));
+        // System.out.println(A+" "+ans);
+
+        return (int)(ans);
+    }
+}

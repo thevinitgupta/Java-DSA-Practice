@@ -12,12 +12,7 @@ class SortIntervals implements Comparator<Interval> {
         return a.start-b.start;
     }
 }
-class Interval {
-    int start;
-    int end;
-    Interval() { start = 0; end = 0; }
-    Interval(int s, int e) { start = s; end = e; }
-}
+
 public class MergeOverlappingIntervals {
     public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
         ArrayList<Interval> res= new ArrayList<>();

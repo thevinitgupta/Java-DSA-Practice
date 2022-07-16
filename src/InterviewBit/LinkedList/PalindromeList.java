@@ -1,4 +1,4 @@
-package InterviewBit;
+package InterviewBit.LinkedList;
 
 import LinkedLists.ListNode;
 
